@@ -4,8 +4,8 @@ const app = express();
 //app.use(express.static('public'));
 
 //la aplicacion correra por el puerto 3000 
-app.listen(3000, ()=>{
-	console.log('servidor encendidoo');
+app.listen(7777, ()=>{
+	console.log('servidor encendidoo abre --> http://localhost:7777');
 	console.log(__dirname);
 });
 app.use('/images', express.static(__dirname + '/public/images'));
