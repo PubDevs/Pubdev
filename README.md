@@ -15,5 +15,5 @@ Aqui puedes encontrar el diseño de nuestra pagina web principal la cual utiliza
 ## Contribuyentes
 
 * Sebastian Roa Meneses
-*other
-*other
+* other
+* other
