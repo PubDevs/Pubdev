@@ -20,7 +20,7 @@ app.get('/eventos', (req, res) => {
 });
 app.get('/registro', (req, res) => {
 	//eventos
-	res.sendFile('Registro.html', {root: path.join(__dirname, './public/')});
+	res.sendFile('registro.html', {root: path.join(__dirname, './public/')});
 });
 
 app.get('/evento', (req, res) => {
