@@ -18,7 +18,7 @@
 		<meta name="KEYWORDS" content="palabras clave">
 		<meta name="Resource-type" content="Index">
 		<meta name="Revisit-after" content="60 days">
-		<meta name="robots" content="follow">
+		<meta name="robots" content="follow"> 
 		<link rel="icon" href="images/pic00.jpg">
 		<link rel="stylesheet" href="assets/css/salonFamas1.css" />
 		<!--Menu-->
@@ -60,7 +60,7 @@
 					</header>
 					<div class="row">
 						<div class="col-12">
-							<form method="post" action="#">
+							<form>
 								<div class="row">
 									<div class="col-12">
 										<input type="text" name="name" id="name" placeholder="Nombre" />
@@ -69,7 +69,7 @@
 										<input type="email" name="email" id="email" placeholder="Correo" />
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="text" name="subject" id="subject" placeholder="nick" />
+										<input type="text" name="subject" id="subject" placeholder="sobre nombre" />
 									</div>
 									<div class="col-6 col-12-small">
 										<input type="password" name="pass1" id="pass1" placeholder="contraseña" />
@@ -79,7 +79,7 @@
 									</div>
 									<h3>Herramientas en las cuales tiene conocimiento</h3>
 									<div class="col-6 col-12-small">
-										 <select name="asd" id="">
+										 <select id="Back">
 										 	<option value="">Back-end</option>
 											<option value="1">PHP</option>
 									  		<option value="2">Python</option>
@@ -95,7 +95,7 @@
 									</div>
 
 									<div class="col-6 col-12-smajll">
-										 <select name="asd" id="gh">
+										 <select id="Front">
 										 	<option value="">Front-End</option>
 										 	<option value="1">HTML5</option>
 											<option value="1">Bootstrap</option>
@@ -108,15 +108,12 @@
 									  		</select>
 
 									</div>
-									
-
-
 									<div class="col-12">
 										<textarea name="message" id="message" placeholder="Una frase inspiradora que quieras memorar"></textarea>
 									</div>
 									<div class="col-12">
 										<ul class="actions">
-											<li><input type="submit" value="Registrarse" /></li>
+											<li><input type="button" id="btnRegistrarse" value="Registrarse" /></li>
 											<li><input type="reset" value="limpiar Formulario" class="alt" /></li>
 										</ul>
 									</div>
@@ -151,6 +148,8 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/menu.js"></script>
+			<script src="assets/js/sweetalert2.js"></script>
+			<script src="assets/js/registro.js"></script>
 
 
 	</body>
