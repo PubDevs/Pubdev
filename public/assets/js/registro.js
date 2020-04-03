@@ -17,7 +17,15 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 	console.log(validarEmail(correo));
 	if(nombre !== "" && validarEmail(correo) && sobreNombre !== "" &&  validarContrasena(contrasena1, contrasena2) && BackEnd !== "Back-end" && FrontEnd !== "Front-End"){
 		var url = '/registro/form';
-		var data = {username: 'example'};
+		var data = {
+			nombre: nombre,
+			correo: correo,
+			sobreNombre: sobreNombre,
+			contrasena1: contrasena1,
+			contrasena2: contrasena2,
+			BackEnd: BackEnd,
+			FrontEnd: FrontEnd
+		};
 
 		fetch(url, {
 		  method: 'POST', // or 'PUT'
