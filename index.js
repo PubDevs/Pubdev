@@ -18,9 +18,9 @@ app.listen(7777, ()=>{
 app.use('/images', express.static(__dirname + '/public/images'));
 app.use('/assets', express.static(__dirname + '/public/assets'));
 
-app.get('/', function(req, res){
+app.get('/', (req, res)=>{
   res.sendFile('index.html', {root: path.join(__dirname, './public/')});
-  db.ref("Usuarios/1075307011").on("value", function(datos){
+  db.ref("Usuarios/1075307011").on("value", (datos)=>{
   	console.log(datos.val());
   })
 }); 

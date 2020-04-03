@@ -6,15 +6,6 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 	var contrasena2 = document.getElementById("pass2").value;
 	var BackEnd = document.getElementById("Back").value;
 	var FrontEnd = document.getElementById("Front").value;
-	console.log(nombre);
-	console.log(correo);
-	console.log(sobreNombre);
-	console.log(contrasena1);
-	console.log(contrasena2);
-	console.log(BackEnd);
-	console.log(FrontEnd);
-	console.log(validarContrasena(contrasena1,contrasena2));
-	console.log(validarEmail(correo));
 	if(nombre !== "" && validarEmail(correo) && sobreNombre !== "" &&  validarContrasena(contrasena1, contrasena2) && BackEnd !== "Back-end" && FrontEnd !== "Front-End"){
 		var url = '/registro/form';
 		var data = {username: 'example'};
@@ -51,3 +42,4 @@ function validarEmail(email){
   var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
 }
+
