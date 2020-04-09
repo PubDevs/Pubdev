@@ -12,4 +12,4 @@ app.set("view engine", "hbs")//llamamos al motor de render de las plantillas htm
 app.use("/", router)
 
 app.listen(3000)
-console.log("the server is now running on port 3000")
+console.log("Servidor encendido abre --> http://localhost:3000")
