@@ -1,16 +1,16 @@
 {
-  "name": "PubDev",
+  "name": "pub",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.2",
-    "express": "^4.17.1"
+  "dependencies": {
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "firebase-admin": "^8.10.0"
   }
 }
