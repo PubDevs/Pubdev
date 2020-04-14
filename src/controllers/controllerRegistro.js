@@ -5,14 +5,15 @@ exports.renderRegistroPage = (req, res) => {
 }
 exports.registrarUsuario = async (req, res) => {
 	if(validarInformacion(req.body.nombre,req.body.correo,req.body.sobreNombre,req.body.contrasena1,req.body.contrasena2,req.body.BackEnd,req.body.FrontEnd)){
-		const newModeloRegistro = new ModelRegistro(req.body)
+		const newModeloRegistro = new ModelRegistro(req.body, req.body.img)
 		//console.log((await newModeloRegistro.consultarCorreo()).datos)
 		var datos =  (await newModeloRegistro.consultarCorreo()).datos
 		console.log(datos)
 		if(datos == null){
-			newModeloRegistro.registrarEnFirebaseAuth()
-			newModeloRegistro.ajustarJquey()
-			newModeloRegistro.crearUsuario()
+			newModeloRegistro.guardarImgFireStorage()
+			//newModeloRegistro.registrarEnFirebaseAuth()
+			//newModeloRegistro.ajustarJquey()
+			//newModeloRegistro.crearUsuario()
 			res.json(true)
 		}else{
 			res.json(false)

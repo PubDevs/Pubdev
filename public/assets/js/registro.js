@@ -6,9 +6,12 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 	var contrasena2 = document.getElementById("pass2").value;
 	var BackEnd = document.getElementById("Back").value;
 	var FrontEnd = document.getElementById("Front").value;
+	var foto = document.getElementById("foto");
 	if(nombre !== "" && validarEmail(correo) && sobreNombre !== "" &&  validarContrasena(contrasena1, contrasena2) && BackEnd !== "Back-end" && FrontEnd !== "Front-End"){
 		var url = '/registro/form';
+		
 		var data = {
+			img: foto.files[0],
 			nombre: nombre,
 			correo: correo,
 			sobreNombre: sobreNombre,
@@ -19,8 +22,8 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 		};
 
 		fetch(url, {
-		  method: 'POST', // or 'PUT'
-		  body: JSON.stringify(data), // data can be `string` or {object}!
+		  method: 'POST',
+		  body: JSON.stringify(data), 
 		  headers:{
 		    'Content-Type': 'application/json'
 		  }
