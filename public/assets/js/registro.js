@@ -11,7 +11,6 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 		var url = '/registro/form';
 		
 		var data = {
-			img: foto.files[0],
 			nombre: nombre,
 			correo: correo,
 			sobreNombre: sobreNombre,
