@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "firebase": "^7.14.0",
+    "firebase-admin": "^8.10.0",
     "hbs": "^4.1.1",
-    "firebase-admin": "^8.10.0"
+    "sha1": "^1.1.1"
   }
 }

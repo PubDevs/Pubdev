@@ -1,0 +1,10 @@
+{
+    apiKey: "AIzaSyAkAne3jmc5QVjIWCDVd0nGMDevlKLuhig",
+    authDomain: "pubdev-968b9.firebaseapp.com",
+    databaseURL: "https://pubdev-968b9.firebaseio.com",
+    projectId: "pubdev-968b9",
+    storageBucket: "pubdev-968b9.appspot.com",
+    messagingSenderId: "873812772334",
+    appId: "1:873812772334:web:6ad03ca3af78f457627aff",
+    measurementId: "G-KXBQE6HPF5"
+}

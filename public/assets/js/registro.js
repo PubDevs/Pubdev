@@ -26,7 +26,8 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 		  }
 		}).then(res => res.json())
 		.catch(error => console.error('Error:', error))
-		.then(response => console.log('Success:', response));
+		.then(response => alertas(response));
+		
 
 	}else{
 		Swal.fire({
@@ -49,5 +50,22 @@ function validarContrasena(pass1, pass2){
 function validarEmail(email){
   var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
+}
+
+function alertas(estado){
+	if(estado){
+		Swal.fire(
+			'Te acabas de registrar a pubdev!',
+			'Felicitaciones ya eres un miembro mas',
+			'success'
+		  )
+	}else{
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'No te pudiste registrar a pubdev',
+			footer: 'quisas ya tiene una cuenta <a href>verifica</a>'
+		  })
+	}
 }
 

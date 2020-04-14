@@ -1,12 +1,18 @@
 const express = require("express")
 const router = express.Router()
-const controller = require("./controllers/controller")
+//lista de controlladores
+const controllerIndex = require("./controllers/controllerIndex")
+const controllerEventos = require("./controllers/controllerEventos")
+const controllerRegistro = require("./controllers/controllerRegistro")
+const controllerevento = require("./controllers/controllerEvento")
+const controllerSalonDeFama = require("./controllers/controllerSalondefama")
 
-router.get("/", controller.renderIndexPage)
-router.get("/eventos", controller.renderEventosPage)
-router.get("/registro", controller.renderRegistroPage)
-router.get("/evento", controller.renderEventoPage)
-router.get("/salondefama", controller.renderSalondefamaPage)
-router.post("/registro/form", controller.registrarUsuario)
+//lista de rutas
+router.get("/", controllerIndex.renderIndexPage)
+router.get("/eventos", controllerEventos.renderEventosPage)
+router.get("/registro", controllerRegistro.renderRegistroPage)
+router.get("/evento", controllerevento.renderEventoPage)
+router.get("/salondefama", controllerSalonDeFama.renderSalondefamaPage)
+router.post("/registro/form", controllerRegistro.registrarUsuario)
 
 module.exports = router
