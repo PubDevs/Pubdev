@@ -1,20 +1,14 @@
+
 var Firebase = require('firebase');
-const admin = require('firebase-admin');
 const sha1 = require('sha1');
-const googleStorage = require('@google-cloud/storage');
-const storage = googleStorage({
+//const googleStorage = require('@google-cloud/storage');
+/*const storage = googleStorage({
 	projectId: "pubdev-968b9",
 	keyFilename: "../../pubdev-968b9-firebase-adminsdk-i9atd-d4e7d40b63.json"
-  });
-const bucket = storage.bucket("gs://pubdev-968b9.appspot.com/");
-//configuracion para acceder a la db de firebase
+  });*/
+//const bucket = storage.bucket("gs://pubdev-968b9.appspot.com/");
+//configuracion para acceder a la this.db de firebase
 
-var serviceAccount = require("../../pubdev-968b9-firebase-adminsdk-i9atd-d4e7d40b63.json")
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://pubdev-968b9.firebaseio.com/"
-  });
-  var db = admin.database();
   
   var config = {
     apiKey: "AIzaSyAkAne3jmc5QVjIWCDVd0nGMDevlKLuhig",
@@ -28,17 +22,21 @@ admin.initializeApp({
 }
   Firebase.initializeApp(config);
 
-const registro = function (datos, img){
+const registro = function (datos, db){
+	this.db=db.database()
+	this.auth = db.auth()
 	this.datos = datos
-	this.estado = false
-	this.img = img
+	
 }
+
+
 registro.prototype.consultarCorreo =  async function(){
 	return new Promise (resolver => {
+		//console.log("hola");
 		var url = "Cuentas/Usuarios/"+sha1(this.datos.correo)
-			db.ref(url).on("value", function(data){
-			db.ref(url).off()
-		resolver({datos: data.val()})
+			this.db.ref(url).on("value", (data)=>{
+				this.db.ref(url).off()
+			resolver({datos: data.val()})
 		})
 	})
 }
@@ -51,11 +49,11 @@ registro.prototype.ajustarJquey = function(){
 
 registro.prototype.crearUsuario = function(){
 	var url = "Cuentas/Usuarios/"+sha1(this.datos.correo)
-	db.ref(url).set(this.datos)
+	this.db.ref(url).set(this.datos)
 }
 
 registro.prototype.registrarEnFirebaseAuth = function(){
-		admin.auth().createUser({
+		this.auth.createUser({
 			email: this.datos.correo,
 			password: this.datos.contrasena1
 		  })
@@ -66,7 +64,7 @@ registro.prototype.registrarEnFirebaseAuth = function(){
 			});	
 }
 
-registro.prototype.guardarImgFireStorage = function(){
+/*registro.prototype.guardarImgFireStorage = function(){
 	console.log('Upload Image');
 	let file = this.img;
 	if (file){
@@ -108,5 +106,5 @@ const uploadImageToStorage = (file) => {
   
 	  blobStream.end(file.buffer);
 	});
-  }
+  }*/
 module.exports = registro
