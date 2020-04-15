@@ -7,12 +7,7 @@ ModeloCrearEventos.prototype.consultarEvento = async function(){
     return new Promise (resolver => {
         this.db.ref("Eventos/"+this.datos.tipoEvento+"/"+this.datos.nombre).on("value", (data)=>{
             this.db.ref("Eventos/"+this.datos.tipoEvento+"/"+this.datos.nombre).off()
-            console.log(data)
-            if(data == undefined){
-                resolver(false)
-            }else{
-                resolver(true)
-            }
+                resolver({datos: data.val()})
         })
     })
 }

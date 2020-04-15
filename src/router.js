@@ -20,6 +20,8 @@ const controllerSalonDeFama = require("./controllers/controllerSalondefama")
 const controllerAmdIndex = require("./controllers/controllerAdmIndex")
 const controllerAdmCrearEvento = require("./controllers/controllerAdmCrearEeventos")
 controllerAdmCrearEvento.guardarDb(db)
+const controllerVerUsuarios = require("./controllers/controllerAdmverUsuarios")
+controllerVerUsuarios.guardarDb(db)
 
 //lista de rutas
 router.get("/", controllerIndex.renderIndexPage)
@@ -32,6 +34,7 @@ router.post("/registro/form", controllerRegistro.registrarUsuario)
 router.get("/admpubdevindex", controllerAmdIndex.renderAdmIndexPage)
 router.get("/admpubdevcreareventos", controllerAdmCrearEvento.renderadmcreareventosPage)
 router.post("/admpubdevcreareventos/form", controllerAdmCrearEvento.crearEvento)
-
+router.get("/admpubdevverusuarios", controllerVerUsuarios.renderadmverusuariosPage)
+router.get("/admpubdevverusuarios/traer", controllerVerUsuarios.traertodosLosUsuarios)
 
 module.exports = router

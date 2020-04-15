@@ -2,11 +2,14 @@ document.getElementById("btnCrear").addEventListener("click", function(e){
     var datos = capturarDatos();
     console.log(datos);
     if(validarDatos(datos)){
-        if(enviarDatos(datos)){
-
-        }
+        enviarDatos(datos)
     }else{
-
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'datos vacios',
+            footer: 'porfavor llene todos los datos'
+          })
     }
     
 });
@@ -48,18 +51,39 @@ function validarDatos(datos){
         }
 }
 
-function enviarDatos(data){
-    var url = "/admpubdevcreareventos/form";
-    var metodo = "POST";
+async function enviarDatos(data){
+    return new Promise (resolver => {
+        var estado;
+        var url = "/admpubdevcreareventos/form";
+        var metodo = "POST";
+    
+        fetch(url, {
+            method: metodo,
+            body: JSON.stringify(data), 
+            headers:{
+              'Content-Type': 'application/json'
+            }
+          }).then(res => res.json())
+          .catch(error => console.error('Error:', error))
+          .then(response => alertas(response));
+    })
+    
 
-    fetch(url, {
-        method: metodo,
-        body: JSON.stringify(data), 
-        headers:{
-          'Content-Type': 'application/json'
-        }
-      }).then(res => res.json())
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log(response));
+}
 
+function alertas(estado){
+    if(estado){
+        Swal.fire(
+            'Se creo el evento',
+            'ya puedes empesar a hacer publisidad',
+            'success'
+          )
+    }else{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'el nombre del evento ya existe',
+            footer: 'coloque otro nombre we'
+          })
+    }
 }
