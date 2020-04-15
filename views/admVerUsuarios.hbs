@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin Pubdev</title>
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><img src="images/logo.png" alt="50" width="50"> <a href="/admpubdevindex">administrador</a></div>
+      <div class="list-group list-group-flush">
+        <a href="/admpubdevcreareventos" class="list-group-item list-group-item-action bg-light">Crear eventos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Ver eventos realizados</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Ver proximos eventos</a>
+        <a href="/admpubdevverusuarios" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
+      </div>
+    </div>
+    <div id="page-content-wrapper">
+      <button class="btn btn-primary" id="menu-toggle">Menu lateral</button>
+      <div class="container">
+        <h1 class="mt-4">Bienvenido Nick name vas a ver los usuarios</h1>
+        <p>Recuerda que todo se hace con previo aviso =D al grupo de administradores</p>
+      </div>
+      <div class="container-fluid">
+          <!-- tabla -->
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Sobre nombre</th>
+                    <th scope="col">utilidades</th>
+                    </tr>
+                </thead>
+                <tbody id="tableusuar">
+                    
+                </tbody>
+                </table>
+        <!-- fin tabla -->
+      </div>
+         
+    </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/admverusuarios.js"></script>
+  <script src="assets/js/sweetalert2.js"></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+</body>
+</html>
