@@ -13,7 +13,7 @@ controllerAdmCrearEvento.crearEvento = async (req, res) => {
     const newObj = new ModelCrearEventos(req.body, this.db)
     if((await newObj.consultarEvento()).datos == null){
         newObj.crearEvento()
-        res.json(true)
+        res.json(true)  
     }else{
         res.json(false)
     }

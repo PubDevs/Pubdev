@@ -1,36 +1,22 @@
-document.getElementById("btnRegistrarse").addEventListener("click", function(event){
-	var nombre = document.getElementById("name").value;
-	var correo = document.getElementById("email").value;
-	var sobreNombre = document.getElementById("subject").value;
-	var contrasena1 = document.getElementById("pass1").value;
-	var contrasena2 = document.getElementById("pass2").value;
-	var BackEnd = document.getElementById("Back").value;
-	var FrontEnd = document.getElementById("Front").value;
-	var foto = document.getElementById("foto");
-	if(nombre !== "" && validarEmail(correo) && sobreNombre !== "" &&  validarContrasena(contrasena1, contrasena2) && BackEnd !== "Back-end" && FrontEnd !== "Front-End"){
-		var url = '/registro/form';
-		
-		var data = {
-			nombre: nombre,
-			correo: correo,
-			sobreNombre: sobreNombre,
-			contrasena1: contrasena1,
-			contrasena2: contrasena2,
-			BackEnd: BackEnd,
-			FrontEnd: FrontEnd
-		};
+/*document.getElementById("btnRegistrarse").addEventListener("click", function(event){
+	
+	var foto = document.getElementById("fileup");
 
+	var form = new FormData(document.getElementById("formulario"));
+	form.append("foto", foto.files[0]);
+	console.log(form)
+	if(form.get("nombre") !== "" && validarEmail(form.get("correo")) && form.get("sobreNombre") !== "" &&  validarContrasena(form.get("contrasena1"), form.get("contrasena2")) && form.get("BackEnd") !== "Back-end" && form.get("FrontEnd") !== "Front-End"){
+		var url = '/registro/form';
 		fetch(url, {
 		  method: 'POST',
-		  body: JSON.stringify(data), 
-		  headers:{
-		    'Content-Type': 'application/json'
+		  body: form, 
+		  headers: {
+			  "content-type": "multipart/form-data"
 		  }
 		}).then(res => res.json())
 		.catch(error => console.error('Error:', error))
 		.then(response => alertas(response));
 		
-
 	}else{
 		Swal.fire({
 		  icon: 'error',
@@ -39,7 +25,7 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 		  footer: 'Echa un vistazo a tu formulario'
 		});
 	}
-});
+});*/
 
 function validarContrasena(pass1, pass2){
 	if(pass1 !== "" && pass1 !== "" && (pass1 === pass2)){
