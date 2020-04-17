@@ -18,7 +18,7 @@ controllerRegistro.registrarUsuario = async (req, res) => {
 			newModeloRegistro.guardarImgFireStorage(req.file, "perfil/"+sha1(req.body.correo)+".png")
 		}
 		//res.json(true)
-		res.redirect("/")
+		res.redirect("/salondefama")
 	}else{
 		//res.json(false)
 		res.redirect("/registro")
