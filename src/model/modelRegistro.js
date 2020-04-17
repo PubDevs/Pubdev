@@ -1,4 +1,3 @@
-
 var Firebase = require('firebase');
 const sha1 = require('sha1');
 const {Storage} = require('@google-cloud/storage');
@@ -9,16 +8,11 @@ const storage = new Storage({
 //const bucket = storage.bucket("gs://pubdev-968b9.appspot.com/");
 //configuracion para acceder a la this.db de firebase
 
-  
-
-
 const registro = function (datos, db){
 	this.db=db.firestore()
 	this.auth = db.auth()
 	this.datos = datos
-	
 }
-
 registro.prototype.crearUsuarionew = function(){
 	return new Promise (resolver => {
 		const db = this.db
@@ -59,52 +53,8 @@ registro.prototype.crearUsuarionew = function(){
 			resolver(false)
 			//console.log('Error getting documents', err);
 			});
-
-
-
-			
 		})
 }
-
-/*registro.prototype.consultarCorreo =  async function(){
-	return new Promise (resolver => {
-		//console.log("hola");
-		var url = "Cuentas/Usuarios/"+sha1(this.datos.correo)
-			this.db.ref(url).on("value", (data)=>{
-				this.db.ref(url).off()
-			resolver({datos: data.val()})
-		})
-	})
-}*/
-
-/*registro.prototype.ajustarJquey = function(){
-	delete this.datos.contrasena1
-	delete this.datos.contrasena2
-}*/
-
-/*registro.prototype.crearUsuario = function(){
-	var url = "Cuentas/Usuarios/"+sha1(this.datos.correo)
-	this.db.ref(url).set(this.datos)
-}*/
-
-/*registro.prototype.registrarEnFirebaseAuth = function(){
-	return new Promise (resolver => {
-		this.auth.createUser({
-			email: this.datos.correo,
-			password: this.datos.contrasena1
-		  })
-			.then(function(userRecord) {
-				resolver(true)
-				return 
-				// userRecord.uid     ----   es el iddelasecion
-			})
-			.catch(function(error) {
-				resolver(false)
-				return
-			});	
-	})		
-}*/
-
 registro.prototype.guardarImgFireStorage = function(file,newName){
 	return new Promise((resolve, reject) => {
 	if (file){

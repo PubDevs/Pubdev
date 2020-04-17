@@ -63,19 +63,19 @@
 							<form id="formulario" method="post" action="/registro/form" enctype="multipart/form-data">
 								<div class="row">
 									<div class="col-12">
-										<input type="text" name="nombre" id="name" placeholder="Nombre"/>
+										<input type="text" name="nombre" id="name" placeholder="Nombre" required/>
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="email" name="correo" id="email" placeholder="Correo" />
+										<input type="email" name="correo" id="email" placeholder="Correo" required/>
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="text" name="sobrenombre" id="subject" placeholder="sobre nombre" />
+										<input type="text" name="sobrenombre" id="subject" placeholder="sobre nombre" required/>
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="password" name="contrasena1" id="pass1" placeholder="contraseña" />
+										<input type="password" name="contrasena1" id="pass1" placeholder="contraseña" required/>
 									</div>
 									<div class="col-6 col-12-small">
-										<input type="password" name="contrasena2" id="pass2" placeholder="Confirma tu contraseña" />
+										<input type="password" name="contrasena2" id="pass2" placeholder="Confirma tu contraseña" required/>
 									</div>
 									<h3>Herramientas en las cuales tiene conocimiento</h3>
 									<div class="col-6 col-12-small">
@@ -110,11 +110,11 @@
 									</div>
 
 									<div class="col-12 col-12-smajll file-upload">
-										<input id="fileup" type="file" name="foto" class="file-upload " multiple>
+										<input id="fileup" type="file" name="foto" class="file-upload " required multiple>
 										<label class="file-upload icon solid fa-upload" for="fileup"> Subir Foto</label>
 									</div>
 									<div class="col-12">
-										<textarea name="message" id="message" placeholder="Una frase inspiradora que quieras memorar"></textarea>
+										<textarea name="message" required id="message" placeholder="Una frase inspiradora que quieras memorar"></textarea>
 									</div>
 									<div class="col-12">
 										<ul class="actions">
