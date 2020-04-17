@@ -20,10 +20,9 @@ function imprimirUsuarios(datos){
 var string = ``;
 for (var key in datos){
     string += `<tr>
-    <th>${datos[key].correo}</th>
-    <td>${datos[key].nombre}</td>
-    <td>${datos[key].sobrenombre}</td>
-    <td>Proximo</td>
+    <th>${datos[key].nombre}</th>
+    <td>${datos[key].message}</td>
+    <td>0</td>
     </tr>`;
 }
 document.getElementById("tableusuar").innerHTML = string;
