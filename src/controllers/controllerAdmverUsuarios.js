@@ -1,4 +1,4 @@
-const Modelusuarios = require("../model/modelusuarios");
+const Modelusuarios = require("../model/modelUsuarios");
 
 var controllerVerUsuarios ={}
 controllerVerUsuarios.guardarDb = (db)=>{
