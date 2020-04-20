@@ -1,4 +1,4 @@
-/*document.getElementById("formulario").addEventListener("submit", (e)=>{
+document.getElementById("formulario").addEventListener("submit", (e)=>{
 	var foto = document.getElementById("fileup");
 	var form = new FormData(document.getElementById("formulario"));
 	form.append("foto", foto.files[0]);
@@ -14,8 +14,9 @@
 		  footer: 'Echa un vistazo a tu formulario'
 		});
 	}
-})*/
-/*document.getElementById("btnRegistrarse").addEventListener("click", function(event){
+})
+
+document.getElementById("btnRegistrarse").addEventListener("click", function(event){
 	
 	var foto = document.getElementById("fileup");
 
@@ -42,7 +43,7 @@
 		  footer: 'Echa un vistazo a tu formulario'
 		});
 	}
-});*/
+});
 
 function validarContrasena(pass1, pass2){
 	if(pass1 !== "" && pass1 !== "" && (pass1 === pass2)){

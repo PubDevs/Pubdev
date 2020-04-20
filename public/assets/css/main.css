@@ -188,14 +188,6 @@ html {
     box-sizing: inherit;
 }
 
-body {
-    background-image: url("images/tech.png");
-    /*background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-    background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-    background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-    background-image: url("images/overlay.png"), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);*/
-}
-
 body.is-preload *,
 body.is-preload *:before,
 body.is-preload *:after {
@@ -2533,6 +2525,7 @@ header.major h2:after {
 table {
     margin: 0 0 2em 0;
     width: 100%;
+    text-align: center;
 }
 
 table tbody tr {
@@ -2541,15 +2534,17 @@ table tbody tr {
     border-right: 0;
 }
 
-table td {
-    padding: 0.75em 0.75em;
-}
-
 table th {
     font-size: 0.9em;
     font-weight: 400;
-    padding: 0 0.75em 0.75em 0.75em;
-    text-align: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table td {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 table thead {
