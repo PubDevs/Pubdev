@@ -33,17 +33,18 @@
 	<div id="wrapper">
 
 		<!-- Header -->
-		<header id="header">
+		<header id="header" >
 			<span class="logo"><img src="images/logo01.png" style="width: 300px;" alt="Logo PubDev" /></span>
 			<h1>REGISTRO</h1>
 			<p>¡Únete a nuestra comunidad!</p>
 		</header>
 
+		
 		<!-- Main -->
 		<div id="main">
 
 			<nav id="nav">
-				<ul>
+				<ul class="links">
 					<li><a href="/" class="active">INICIO</a></li>
 					<li><a href="/eventos">EVENTOS</a></li>
 					<li><a href="#">CALENDARIO</a></li>
@@ -51,6 +52,9 @@
 					<li><a href="#">PATROCINADORES</a></li>
 				</ul>
 			</nav>
+
+
+			
 
 			<!-- Content -->
 
@@ -82,11 +86,11 @@
 								<input id="btn_enviar" type="file" accept="image/png, image/jpeg, image/jpg, image/png"
 									name="foto" class="file-upload " required multiple>
 							</div>
-							
-							
+
+
 						</div>
 						<div class="col-8 col-12-smajlls" id="preview"></div>
-						
+
 						<div class="col-12">
 							<textarea name="message" required id="message"
 								placeholder="Una frase inspiradora que quieras memorar" rows="6"></textarea>
@@ -164,21 +168,21 @@
 					<dd><a href="#">information@untitled.tld</a></dd>
 				</dl>
 				<ul class="icons">
-						<li><a href="https://twitter.com/pubdev01" target="_blank"
-								class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/pubdev" target="_blank"
-								class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/pubdev" target="_blank"
-								class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-						<li><a href="https://github.com/PubDevs" target="_blank" class="icon brands fa-github alt"><span
-									class="label">GitHub</span></a></li>
-					</ul>
+					<li><a href="https://twitter.com/pubdev01" target="_blank" class="icon brands fa-twitter alt"><span
+								class="label">Twitter</span></a></li>
+					<li><a href="https://www.facebook.com/pubdev" target="_blank"
+							class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/pubdev" target="_blank"
+							class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					<li><a href="https://github.com/PubDevs" target="_blank" class="icon brands fa-github alt"><span
+								class="label">GitHub</span></a></li>
+				</ul>
 			</section>
 		</footer>
 
 	</div>
 
-<!-- PREVISUALIZAR LA IMAGEN -->
+	<!-- PREVISUALIZAR LA IMAGEN -->
 	<script>
 
 		document.getElementById("btn_enviar").onchange = function (e) {
