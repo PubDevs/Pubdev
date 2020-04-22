@@ -29,12 +29,13 @@ router.get("/eventos", controllerEventos.renderEventosPage)
 router.get("/registro", controllerRegistro.renderRegistroPage)
 router.get("/evento", controllerevento.renderEventoPage)
 router.get("/salondefama", controllerSalonDeFama.renderSalondefamaPage)
-router.post("/registro/form", controllerRegistro.registrarUsuario)
+router.post("/registro/form", multer.single('foto'), controllerRegistro.registrarUsuario)
 //lusta de rutas admin
 router.get("/admpubdevindex", controllerAmdIndex.renderAdmIndexPage)
 router.get("/admpubdevcreareventos", controllerAdmCrearEvento.renderadmcreareventosPage)
-router.post("/admpubdevcreareventos/form", controllerAdmCrearEvento.crearEvento)
+router.post("/admpubdevcreareventos/form",multer.single('foto'),controllerAdmCrearEvento.crearEvento)
 router.get("/admpubdevverusuarios", controllerVerUsuarios.renderadmverusuariosPage)
 router.get("/admpubdevverusuarios/traer", controllerVerUsuarios.traertodosLosUsuarios)
+//router.get("/admpubdevcreareventos", controllerAdmCrearEvento.)
 
 module.exports = router

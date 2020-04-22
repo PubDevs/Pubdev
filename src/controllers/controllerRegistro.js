@@ -1,4 +1,5 @@
 const ModelRegistro = require("../model/modelRegistro");
+const sha1 = require('sha1');
 
 var controllerRegistro={
 	db:null
@@ -6,25 +7,21 @@ var controllerRegistro={
 controllerRegistro.guardarDb = (db)=>{
 	this.db=db
 }
-
 controllerRegistro.renderRegistroPage = (req, res) => {
     res.render("../../views/registro")
 }
 controllerRegistro.registrarUsuario = async (req, res) => {
 	if(validarInformacion(req.body.nombre,req.body.correo,req.body.sobreNombre,req.body.contrasena1,req.body.contrasena2,req.body.BackEnd,req.body.FrontEnd)){
 		const newModeloRegistro = new ModelRegistro(req.body,this.db)
-		var datos =  (await newModeloRegistro.consultarCorreo()).datos
-		if(datos == null){
-			//newModeloRegistro.guardarImgFireStorage()
-			newModeloRegistro.registrarEnFirebaseAuth()
-			newModeloRegistro.ajustarJquey()
-			newModeloRegistro.crearUsuario()
-			res.json(true)
-		}else{
-			res.json(false)
+		var datos = await newModeloRegistro.crearUsuarionew()
+		if(datos){
+			newModeloRegistro.guardarImgFireStorage(req.file, "perfil/"+sha1(req.body.correo)+".png")
 		}
+		//res.json(true)
+		res.redirect("/salondefama")
 	}else{
-		res.json("datos incorrectos")
+		//res.json(false)
+		res.redirect("/registro")
 	}
 }
 

@@ -20,11 +20,10 @@ function imprimirUsuarios(datos){
 var string = ``;
 for (var key in datos){
     string += `<tr>
-    
-    <th>${datos[key].correo}</th>
-    <td>${datos[key].nombre}</td>
-    <td>${datos[key].sobrenombre}</td>
-    <td><img width: 100px;border-radius: 50%; src="${datos[key].imgperfil}" alt="" ></td>
+    <td><img style= "width: 100px; height:100px; border-radius: 50%;" src="${datos[key].imgperfil}" alt="" ></td>
+    <th style="text-transform: capitalize;" >${datos[key].nombre}</th>
+    <td>${datos[key].message}</td>
+    <td>0</td>
     </tr>`;
 }
 document.getElementById("tableusuar").innerHTML = string;

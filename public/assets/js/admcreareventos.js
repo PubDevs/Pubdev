@@ -1,4 +1,4 @@
-document.getElementById("btnCrear").addEventListener("click", function(e){
+/*document.getElementById("btnCrear").addEventListener("click", function(e){
     var datos = capturarDatos();
     console.log(datos);
     if(validarDatos(datos)){
@@ -12,7 +12,7 @@ document.getElementById("btnCrear").addEventListener("click", function(e){
           })
     }
     
-});
+});*/
 function capturarDatos(){
     var jsonData = {
         nombre: document.getElementById("nombreEvento").value,

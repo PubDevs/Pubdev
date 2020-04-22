@@ -1,4 +1,5 @@
 const ModelCrearEventos = require("../model/modelcrearEventos");
+const sha1 = require('sha1');
 
 var controllerAdmCrearEvento ={}
 controllerAdmCrearEvento.renderadmcreareventosPage = (req, res) => {
@@ -11,11 +12,11 @@ controllerAdmCrearEvento.guardarDb = (db)=>{
 
 controllerAdmCrearEvento.crearEvento = async (req, res) => {
     const newObj = new ModelCrearEventos(req.body, this.db)
-    if((await newObj.consultarEvento()).datos == null){
-        newObj.crearEvento()
-        res.json(true)
+    if(await newObj.crearEvento()){
+        await newObj.guardarImgFireStorage(req.file, "eventos/"+sha1(req.body.nombre)+".png")
+        res.redirect("/admpubdevindex")
     }else{
-        res.json(false)
+        res.redirect("/admpubdevcreareventos")
     }
 }
 

@@ -29,41 +29,41 @@
         <h1 class="mt-4">Bienvenido Nick name vas a crear un evento</h1>
         <p>Recuerda que todo se hace con previo aviso =D al grupo de administradores</p>
         <!-- formulario-->
-          <form id="formCrearEvento">
+          <form id="formCrearEvento" method="post" action="/admpubdevcreareventos/form" enctype="multipart/form-data">
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre del evento</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="nombreEvento">
+                <input type="text" class="form-control" name="nombre" id="nombreEvento">
               </div>
             </div>
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Imagen</label>
               <div class="col-sm-10">
-                <input type="file" class="form-control-file" id="imgEvento">
+                <input type="file" name="foto" class="form-control-file" id="imgEvento">
               </div>
             </div>
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">descripcion del evento</label>
               <div class="col-sm-10">
-                 <textarea class="form-control" id="descripcionEvento" rows="3"></textarea>
+                 <textarea class="form-control" name="descripcion" id="descripcionEvento" rows="3"></textarea>
               </div>
             </div>
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Fecha</label>
               <div class="col-sm-10">
-                <input type="date" class="form-control" id="fecha">
+                <input type="date" class="form-control" name="fecha" id="fecha">
               </div>
             </div>
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Hora</label>
               <div class="col-sm-10">
-                <input type="time" class="form-control" id="hora">
+                <input type="time" class="form-control" name="hora" id="hora">
               </div>
             </div>
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Pais</label>
               <div class="col-sm-10">
-                <select class="form-control" id="pais" >
+                <select class="form-control" id="pais" name="pais">
                   <option>Colombia</option>
                 </select>
               </div>
@@ -73,13 +73,13 @@
                 <legend class="col-form-label col-sm-2 pt-0">Tipo de evento</legend>
                 <div class="col-sm-10">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                    <input class="form-check-input" type="radio" name="tipoEvento" id="gridRadios1" value="virtual" checked>
                     <label class="form-check-label" for="gridRadios1">
                       virtual
                     </label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <input class="form-check-input" type="radio" name="tipoEvento" id="gridRadios2" value="precencial">
                     <label class="form-check-label" for="gridRadios2">
                       precencial
                     </label>
@@ -91,7 +91,7 @@
               <div class="col-sm-2">Correo</div>
               <div class="col-sm-10">
                 <div class="form-check">
-                  <input class="form-check-input" name="checkboxCorreosMasivos" type="checkbox" id="gridCheck1">
+                  <input class="form-check-input" name="checkboxCorreosMasivos" name="correoMasivos" type="checkbox" id="gridCheck1">
                   <label class="form-check-label" for="gridCheck1">
                     Enviar correos a nuestros usuarios registrados
                   </label>
@@ -100,7 +100,7 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
-                <button type="button" id="btnCrear" class="btn btn-primary">Crear</button>
+                <button type="submit" id="btnCrear" class="btn btn-primary">Crear</button>
               </div>
             </div>
           </form>

@@ -1,6 +1,9 @@
-const Modelusuarios = require("../model/modelusuarios");
+const Modelusuarios = require("../model/modelUsuarios");
 
 var controllerVerUsuarios ={}
+controllerVerUsuarios.guardarDb = (db)=>{
+	this.db=db
+} 
 controllerVerUsuarios.renderadmverusuariosPage = (req, res) => {
     res.render("../../views/admVerUsuarios")
 }
@@ -11,7 +14,8 @@ controllerVerUsuarios.guardarDb = (db)=>{
 
 controllerVerUsuarios.traertodosLosUsuarios = async (req, res) =>{
     const newObjModelo = new Modelusuarios(this.db)
-    res.json((await newObjModelo.consultarUsuarios()).datos)
+    res.json(await newObjModelo.consultarUsuarios())
 }
 
 module.exports = controllerVerUsuarios
+//-------------------
