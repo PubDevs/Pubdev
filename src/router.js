@@ -1,5 +1,6 @@
 var configDBrealtime = require('./config/configDBfirebaserelatime')
-var db = configDBrealtime.ejecutarEstadoDb()
+var db = configDBrealtime.generateDB()
+var firebaseCliente = configDBrealtime.generateFirebasecliente()
 const express = require("express")
 const router = express.Router()
 const Multer = require('multer');
@@ -18,7 +19,7 @@ const controllerevento = require("./controllers/controllerEvento")
 const controllerSalonDeFama = require("./controllers/controllerSalondefama")
 // lista de controladores adm
 const controllerAmdIndex = require("./controllers/controllerAdmIndex")
-controllerAmdIndex.guardarDb(db)
+controllerAmdIndex.guardarDb(db,firebaseCliente)
 const controllerAdmCrearEvento = require("./controllers/controllerAdmCrearEeventos")
 controllerAdmCrearEvento.guardarDb(db)
 const controllerVerUsuarios = require("./controllers/controllerAdmverUsuarios")

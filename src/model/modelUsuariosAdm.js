@@ -6,17 +6,17 @@ const storage = new Storage({
 	 projectId: "pubdev-968b9"
   });
 
-const ModeloUsuarioAdmin = function (datos, db){ 
+const ModeloUsuarioAdmin = function (datos, db, firebaseCliente){ 
     this.db=db.firestore()
     this.datos = datos
-    this.auth=db.auth()
+    this.auth=firebaseCliente.auth()
     
 }
-ModeloUsuarioAdmin.prototype.logearAdm =  async function(){
-    
+ModeloUsuarioAdmin.prototype.logearAdm = function(){
     return new Promise(resolver => {
         console.log("enta dentro") 
         console.log(this.datos)
+        const auth = this.auth
         this.db.collection("Cuentas").where('correo', '==', this.datos.correo).get()
         .then(snapshot => {
 			if (snapshot.empty){
@@ -35,16 +35,18 @@ ModeloUsuarioAdmin.prototype.logearAdm =  async function(){
                 console.log(json)
                 if(json[0].tipo == "administrador"){
                     console.log("administrador")
-                    /*this.auth.signInWithEmailAndPassword(this.datos.correo, this.datos.clave).catch(function(error) {
+                    this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave)
+                    .catch(function(error) {
                         // Handle Errors here.
                         var errorCode = error.code;
                         var errorMessage = error.message;
-                        console.log(errorCode);
-                        console.log(errorMessage);
-                        // ...
-                        resolver("false")
-                      });
-                      resolver("true")*/
+                        if (errorCode === 'auth/wrong-password') {
+                          console.log('Wrong password.');
+                        } else {
+                          console.log(errorMessage);
+                        }
+                        console.log(error);
+                    });
                 }else{
                     console.log("no adm")
                     resolver("false")
