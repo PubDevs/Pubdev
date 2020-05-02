@@ -15,7 +15,6 @@ controllerAdmIndex.renderAdmLoginPage = (req, res) => {
 controllerAdmIndex.VerificarSiEsAdm =(req, res)=>{
     //console.log(req.body)
     const newObjModelo = new modelUsuariosAdm(req.body, this.db, this.firebaseCliente)
-    var stado = newObjModelo.logearAdm()
-    res.json(stado)
+    var stado = newObjModelo.logearAdm(req,res)
 }
 module.exports=controllerAdmIndex

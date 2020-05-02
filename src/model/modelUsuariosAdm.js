@@ -12,7 +12,7 @@ const ModeloUsuarioAdmin = function (datos, db, firebaseCliente){
     this.auth=firebaseCliente.auth()
     
 }
-ModeloUsuarioAdmin.prototype.logearAdm = function(){
+ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
     return new Promise(resolver => {
         console.log("enta dentro") 
         console.log(this.datos)
@@ -20,41 +20,45 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(){
         this.db.collection("Cuentas").where('correo', '==', this.datos.correo).get()
         .then(snapshot => {
 			if (snapshot.empty){
-                //No existe el administrador
-                console.log("Linea 24 modelo basio")
-                this.datos.imgEvento = ""
-                resolver("false")
+                res.send("Administrador no logeado")
             }else{
                 //existe el usuario
                 console.log("Linea 30 existe user")
-                var json = []
+                let administrador = {}
                 snapshot.forEach(doc => {
                 //console.log(doc.id, '=>', doc.data())
-                json.push(doc.data())
+                administrador=doc.data()
                 });
-                console.log(json)
-                if(json[0].tipo == "administrador"){
+                console.log(administrador)
+                if(administrador.tipo == "administrador"){
                     console.log("administrador")
-                    this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave)
+                    this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave).then(response=>{
+                        req.session.user=administrador
+                        res.redirect("/sudo")
+                    })
                     .catch(function(error) {
                         // Handle Errors here.
                         var errorCode = error.code;
                         var errorMessage = error.message;
                         if (errorCode === 'auth/wrong-password') {
                           console.log('Wrong password.');
+                          res.send("usuario no identificado")
                         } else {
                           console.log(errorMessage);
+                          res.send("ususario no identificado");
                         }
-                        console.log(error);
+                        res.send("usuario no identificado")
                     });
+                    
                 }else{
                     console.log("no adm")
-                    resolver("false")
+                    res.send("no eres administrador");
                 }
             }
         }).catch(err => {
                 console.log('Error getting documents', err);
                 resolver("false")
+                res.send("no aparecez como usuario")
                 });
     })
 }

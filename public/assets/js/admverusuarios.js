@@ -4,7 +4,7 @@ function traerTodosLosUsuarios(){
 }
 function fechTraerUsuarios(){
     var estado;
-        var url = "/admpubdevverusuarios/traer";
+        var url = "/sudo/ver-usuarios/traer";
         var metodo = "get";
     
         fetch(url, {
@@ -19,8 +19,7 @@ function fechTraerUsuarios(){
 function imprimirUsuarios(datos){
 var string = ``;
 for (var key in datos){
-    string += `<tr>
-    
+    string += `<tr>   
     <th>${datos[key].correo}</th>
     <td>${datos[key].nombre}</td>
     <td>${datos[key].sobrenombre}</td>
