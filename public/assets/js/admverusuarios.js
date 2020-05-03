@@ -23,7 +23,7 @@ for (var key in datos){
     <th>${datos[key].correo}</th>
     <td>${datos[key].nombre}</td>
     <td>${datos[key].sobrenombre}</td>
-    <td><img width: 100px;border-radius: 50%; src="${datos[key].imgperfil}" alt="" ></td>
+    <td><img style= "width: 100px; height:100px; src="${datos[key].imgperfil}" alt="" ></td>
     </tr>`;
 }
 document.getElementById("tableusuar").innerHTML = string;
