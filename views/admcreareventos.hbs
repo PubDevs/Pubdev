@@ -9,18 +9,19 @@
   <meta name="author" content="">
 
   <title>Admin Pubdev</title>
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/css/simple-sidebar.css" rel="stylesheet">
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/simple-sidebar.css" rel="stylesheet">
 </head>
 <body>
   <div class="d-flex" id="wrapper">
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><img src="images/logo.png" alt="50" width="50"> <a href="/admpubdevindex">administrador</a></div>
+      <div class="sidebar-heading"><img src="../images/logo.png" alt="50" width="50"> <a href="/sudo">administrador</a></div>
       <div class="list-group list-group-flush">
-        <a href="/admpubdevcreareventos" class="list-group-item list-group-item-action bg-light">Crear eventos</a>
+        <a href="/sudo/crear-evento" class="list-group-item list-group-item-action bg-light">Crear eventos</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Ver eventos realizados</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Ver proximos eventos</a>
-        <a href="/admpubdevverusuarios" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
+        <a href="/sudo/ver-usuarios" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
+        <a href="/sudo/cerrar-session" class="list-group-item list-group-item-action bg-light">Cerrar session</a>
       </div>
     </div>
     <div id="page-content-wrapper">
@@ -29,7 +30,7 @@
         <h1 class="mt-4">Bienvenido Nick name vas a crear un evento</h1>
         <p>Recuerda que todo se hace con previo aviso =D al grupo de administradores</p>
         <!-- formulario-->
-          <form id="formCrearEvento" method="post" action="/admpubdevcreareventos/form" enctype="multipart/form-data">
+          <form id="formCrearEvento" method="post" action="/sudo/crear-evento/form" enctype="multipart/form-data">
             <div class="form-group row">
               <label for="inputEmail3" class="col-sm-2 col-form-label">Nombre del evento</label>
               <div class="col-sm-10">
@@ -110,10 +111,10 @@
          
     </div>
   </div>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/admcreareventos.js"></script>
-  <script src="assets/js/sweetalert2.js"></script>
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/admcreareventos.js"></script>
+  <script src="../assets/js/sweetalert2.js"></script>
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();

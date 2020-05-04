@@ -54,7 +54,7 @@ function validarDatos(datos){
 async function enviarDatos(data){
     return new Promise (resolver => {
         var estado;
-        var url = "/admpubdevcreareventos/form";
+        var url = "/sudo/crear-evento/form";
         var metodo = "POST";
     
         fetch(url, {

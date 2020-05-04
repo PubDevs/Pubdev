@@ -2,6 +2,13 @@ const path = require("path")
 const express = require("express")
 const app = express()
 const router = require("./router")
+const session = require('express-session');
+
+app.use(session({
+    secret: 'lssl, i love forever',
+    resave: true,
+    saveUninitialized: true
+}));
 
 app.use(express.urlencoded({ extended: false})) // midelware 
 app.use(express.json()) // todo los datos se parcean a json
