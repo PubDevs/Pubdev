@@ -25,8 +25,9 @@ for (var key in datos){
     <th style="text-transform: capitalize;" >${datos[key].nombre}</th>
     <td id="message${contador++}"></td>
     <td>0</td>
-    </tr> `;
+    </tr> `;  
 }
+
 document.getElementById("tableusuar").innerHTML = string;
 var contador = 0;
 for (var key in datos){
