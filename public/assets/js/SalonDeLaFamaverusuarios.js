@@ -22,11 +22,12 @@ var contador = 0;
 for (var key in datos){
     string += `<tr>
     <td><img style= "width: 100px; height:100px; border-radius: 50%;" src="${datos[key].imgperfil}" alt="" ></td>
-    <th style="text-transform: capitalize;" >${datos[key].nombre}</th>
-    <td id="message${contador++}"></td>
+    <th style="text-transform: uppercase"><b>${datos[key].nombre}</b></th>
+    <td id="message${contador++}" style="font-style: oblique; font-weight: 500"></td>
     <td>0</td>
-    </tr> `;
+    </tr> `;  
 }
+
 document.getElementById("tableusuar").innerHTML = string;
 var contador = 0;
 for (var key in datos){
