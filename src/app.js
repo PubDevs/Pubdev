@@ -3,7 +3,7 @@ const express = require("express")
 const app = express()
 const router = require("./router")
 const session = require('express-session');
-
+const compress = require("compression")
 app.use(session({
     secret: 'lssl, i love forever',
     resave: true,
@@ -17,6 +17,8 @@ app.set("views", "views")
 app.set("view engine", "hbs")//llamamos al motor de render de las plantillas html
 
 app.use("/", router)
+
+app.use(compress())
 
 app.listen(3000)
 console.log("Servidor encendido abre --> http://localhost:3000")
