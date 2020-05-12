@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<!--
+	Miniport by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+	<title>PubDev</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<meta name="DC.Language" SCHEME="RFC1766" content="Spanish">
+	<meta name="author" content="Sebastian Roa Meneses">
+	<meta name="reply-to" content="Serome111@gmail.com">
+	<link rev="made" href="mailto:Serome111@gmail.com">
+	<meta name="description" content="Comunidad de aprendizaje de desarrolladores del huila">
+	<meta name="KEYWORDS" content="palabras clave">
+	<meta name="Resource-type" content="Index">
+	<meta name="Revisit-after" content="60 days">
+	<meta name="robots" content="follow">
+	<link rel="icon" href="images/icono_low.png">
+
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+</head>
+
+<body class="is-preload">
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Header -->
+		<header id="header">
+			<h1>REGISTRA TUS PUNTOS</h1>
+		</header>
+		<!-- Main -->
+		<div id="main">
+
+			<nav id="nav">
+				<ul class="links">
+					<li><a href="/" class="active">INICIO</a></li>
+					<li><a href="/registro">REGISTRATE</a></li>
+					<li><a href="/eventos">EVENTOS</a></li>
+					<li><a href="/salondefama">SALON DE LA FAMA</a></li>
+					<li><a href="/equipo">EQUIPO</a></li>
+					<!--<li><a href="#">PATROCINADORES</a></li> -->
+				</ul>
+			</nav>
+			<!-- Content -->
+
+			<!-- Form -->
+			<section class="main">
+				<form id="formulario" method="post" action="/registro/form" enctype="multipart/form-data">
+					<div class="row gtr-uniform">
+						<div class="col-12 col-12-xsmall">
+							<input type="text" name="nombre" id="name" placeholder="Correo de usuario Pubdev" required />
+						</div>
+						<div class="col-12 col-12-xsmall">
+							<input type="email" name="correo" id="email" placeholder="Codigo del evento" required />
+						</div>
+						<div class="col-12">
+							<ul class="actions">
+								<li><input type="submit" id="btnRegistrarse" value="Registrar" /></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</section>
+
+
+		</div>
+
+		<!--Footer-->
+		<footer id="footer">
+			<section style="align-items: center;">
+				<header class="major">
+					<h2>Nuestras redes sociales</h2>
+				</header>
+
+
+			</section>
+			<section style="align-items: center;">
+				<ul class="icons">
+					<li><a href="https://twitter.com/pubdev01" target="_blank" class="icon brands fa-twitter alt"><span
+								class="label">Twitter</span></a></li>
+					<li><a href="https://www.facebook.com/pubdev" target="_blank"
+							class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
+					<li><a href="https://www.instagram.com/pubdev" target="_blank"
+							class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
+					<li><a href="https://t.me/joinchat/DS7d-VbynYfq5sKTrMDYtA" target="_blank"
+							class="icon brands fa-telegram alt"><span class="label">Telegram</span></a></li>
+					<li><a href="https://www.youtube.com/channel/UCkWzkTACfvry7fwIkFRoKIQ" target="_blank"
+							class="icon brands fa-youtube alt"><span class="label">YouTube</span></a></li>
+				</ul>
+			</section>
+		</footer>
+
+	</div>
+
+	</div>
+
+	<!-- PREVISUALIZAR LA IMAGEN -->
+	<script>
+
+		document.getElementById("btn_enviar").onchange = function (e) {
+			let reader = new FileReader();
+
+			reader.onload = function () {
+				let preview = document.getElementById('preview'),
+					image = document.createElement('img');
+
+				image.src = reader.result;
+
+				preview.innerHTML = '';
+				preview.append(image);
+			};
+
+			reader.readAsDataURL(e.target.files[0]);
+		}
+
+	</script>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/jquery.scrollex.min.js"></script>
+	<script src="assets/js/jquery.scrolly.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script src="assets/js/registro.js"></script>
+
+</body>
+
+</html>
