@@ -52,7 +52,13 @@ const resource={
             src:"jquery.scrollex.min.js",
             auth:false
             
-        }, 
+        },
+        {
+            router:"jquery-scrolly-min",
+            src:"jquery.scrolly.min.js",
+            auth:false
+        }
+        ,
         {
             router:"main",
             src:"main.js",

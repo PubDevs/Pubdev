@@ -15,7 +15,10 @@ app.use(session({
 
 app.use(express.urlencoded({ extended: false})) // midelware 
 app.use(express.json()) // todo los datos se parcean a json
-app.use(express.static(__dirname + '/../public'))// damos aceso statico a la carpeta public 
+app.use("/assets/css",express.static(__dirname + '/../public/assets/css'))// damos aceso statico a la carpeta public 
+app.use("/assets/sass",express.static(__dirname + '/../public/assets/sass'))// damos aceso statico a la carpeta public 
+app.use("/assets/webfonts",express.static(__dirname + '/../public/assets/webfonts'))// damos aceso statico a la carpeta public 
+app.use("/images",express.static(__dirname + '/../public/images'))// damos aceso statico a la carpeta public 
 app.set("views", "views")
 app.set("view engine", "hbs")//llamamos al motor de render de las plantillas html
 
