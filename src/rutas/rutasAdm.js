@@ -19,7 +19,7 @@ const controllerAdmCrearEvento = require("../controllers/controllerAdmCrearEeven
 controllerAdmCrearEvento.guardarDb(db)
 const controllerVerUsuarios = require("../controllers/controllerAdmverUsuarios")
 controllerVerUsuarios.guardarDb(db)
-
+ 
 
 
 //middleware creados

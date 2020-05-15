@@ -1,6 +1,7 @@
 var Firebase = require('firebase');
 const sha1 = require('sha1');
 const {Storage} = require('@google-cloud/storage');
+const jwt = require("jsonwebtoken")
 const storage = new Storage({
 	keyFilename: "../pubdev-968b9-firebase-adminsdk-i9atd-d4e7d40b63.json",
 	 projectId: "pubdev-968b9"
@@ -33,7 +34,10 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                 if(administrador.tipo == "administrador"){
                     console.log("administrador")
                     this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave).then(response=>{
-                        req.session.user=administrador
+                        var token=jwt.sign(administrador,"obviamente lo que esta aca se cambia", {
+                            expiresIn: 60 * 60 * 24 // expires in 24 hours
+                         })
+                        req.session.user=token
                         res.redirect("/sudo")
                     })
                     .catch(function(error) {
@@ -47,7 +51,6 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                           console.log(errorMessage);
                           res.send("ususario no identificado");
                         }
-                        res.send("usuario no identificado")
                     });
                     
                 }else{

@@ -1,10 +1,18 @@
+
+const jwt = require("jsonwebtoken")
 const checkoutUser={
-    isAdmin(req, res, next){
+    isAdmin(req, res, next){           
         if(req.session.user != undefined){
-            if(req.session.user.tipo=="administrador")
-                next();
-            else
-                res.redirect("/sudo/login")
+            jwt.verify(req.session.user,"obviamente lo que esta aca se cambia",function(err,decoded){
+                if(err){
+                    res.redirect("/sudo/login")
+                }else{
+                    if(decoded.tipo=="administrador")
+                        next();
+                    else
+                        res.redirect("/sudo/login")
+                }            
+            })
         }else{
             res.redirect("/sudo/login")
         }
