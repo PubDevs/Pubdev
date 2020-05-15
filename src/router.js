@@ -1,5 +1,4 @@
 var configDBrealtime = require('./config/configDBfirebaserelatime')
-var db = configDBrealtime.generateDB()
 var firebaseCliente = configDBrealtime.generateFirebasecliente()
 const express = require("express")
 const router = express.Router()
@@ -36,17 +35,6 @@ controllerVerUsuarios.guardarDb(db)
 //middleware creados
 const checkoutUser = require("./middleware/middleware.checkoutuser")
 
-//lista de rutas
-router.get("/", controllerIndex.renderIndexPage)
-router.get("/eventos", controllerEventos.renderEventosPage)
-router.get("/registro", controllerRegistro.renderRegistroPage)
-router.get("/evento", controllerevento.renderEventoPage)
-router.get("/evento2", controllerevento2.renderEvento2Page)
-router.get("/salondefama", controllerSalonDeFama.renderSalondefamaPage)
-router.post("/registro/form", multer.single('foto'), controllerRegistro.registrarUsuario)
-router.get("/puntos", controllerPuntos.renderPuntosPage)
-router.get("/registroPuntos", controllerRegistroPuntos.renderPuntosPageRegistro)
-router.get("/equipo", controllerEquipo.renderOrganizadoresPage)
 
 //lusta de rutas admin
 router.get("/sudo",checkoutUser.isAdmin ,controllerAmdIndex.renderAdmIndexPage)

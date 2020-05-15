@@ -1,7 +1,8 @@
 const path = require("path")
 const express = require("express")
 const app = express()
-const router = require("./router")
+const routerIndex = require("./rutas/rutasUser")
+const routerAdm = require("./rutas/rutasAdm")
 const session = require('express-session');
 const compress = require("compression")
 app.use(session({
@@ -16,7 +17,8 @@ app.use(express.static(__dirname + '/../public'))// damos aceso statico a la car
 app.set("views", "views")
 app.set("view engine", "hbs")//llamamos al motor de render de las plantillas html
 
-app.use("/", router)
+app.use("/", routerIndex)
+app.use("/sudo",routerAdm)
 
 app.use(compress())
 
