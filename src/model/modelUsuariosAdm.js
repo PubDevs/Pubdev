@@ -16,7 +16,7 @@ const ModeloUsuarioAdmin = function (datos, db, firebaseCliente){
 ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
     return new Promise(resolver => {
         const auth = this.auth
-        this.db.collection("Cuentas").where('correo', '==', this.datos.correo).get()
+        this.db.collection("Cuentas").where('correo', '==', this.datos.correo.toLowerCase()).get()
         .then(snapshot => {
 			if (snapshot.empty){
                 res.send("Administrador no logeado")
@@ -28,7 +28,7 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                 administrador=doc.data()
                 });
                 if(administrador.tipo == "administrador"){
-                    this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave).then(response=>{
+                    this.auth.signInWithEmailAndPassword(this.datos.correo.toLowerCase(),this.datos.clave).then(response=>{
                         var token=jwt.sign(administrador,"obviamente lo que esta aca se cambia", {
                             expiresIn: 60 * 60 * 24 // expires in 24 hours
                          })
