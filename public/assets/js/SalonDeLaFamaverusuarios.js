@@ -24,7 +24,7 @@ for (var key in datos){
     <td><img style= "width: 100px; height:100px; border-radius: 50%;" src="${datos[key].imgperfil}" alt="" ></td>
     <th style="text-transform: uppercase"><b>${datos[key].nombre}</b></th>
     <td id="message${contador++}" style="font-style: oblique; font-weight: 500"></td>
-    <td>0</td>
+    <td>${datos[key].puntos}</td>
     </tr> `;  
 }
 
