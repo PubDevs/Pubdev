@@ -19,12 +19,11 @@ const controllerAdmCrearEvento = require("../controllers/controllerAdmCrearEeven
 controllerAdmCrearEvento.guardarDb(db)
 const controllerVerUsuarios = require("../controllers/controllerAdmverUsuarios")
 controllerVerUsuarios.guardarDb(db)
- 
-
+const controllerAdmGeneradorDePuntos = require("../controllers/controllerAdmGeneradorDePuntos")
+controllerAdmGeneradorDePuntos.guardarDb(db)
 
 //middleware creados
 const checkoutUser = require("../middleware/middleware.checkoutuser")
-
 
 //lusta de rutas admin
 router.get("/",checkoutUser.isAdmin ,controllerAmdIndex.renderAdmIndexPage)
@@ -33,6 +32,10 @@ router.post("/crear-evento/form",multer.single('foto'),controllerAdmCrearEvento.
 router.get("/ver-usuarios", checkoutUser.isAdmin ,controllerVerUsuarios.renderadmverusuariosPage)
 router.get("/ver-usuarios/traer", controllerVerUsuarios.traertodosLosUsuarios)
 router.get("/login", controllerAmdIndex.renderAdmLoginPage)
+router.get("/GeneradorDePuntos",checkoutUser.isAdmin ,controllerAdmGeneradorDePuntos.renderAdmGeneradorDePuntosPage)
+router.post("/CrearCodigo", controllerAdmGeneradorDePuntos.generarCodigo)
+router.get("/GeneradorDePuntos/traerCodigos", controllerAdmGeneradorDePuntos.bucarCodigos)
+router.post("/GeneradorDePuntos/cambiarestadodelcodigo", controllerAdmGeneradorDePuntos.cambiaresadodecodigogenerado)
 
 router.post("/login", controllerAmdIndex.VerificarSiEsAdm)
 router.get("/cerrar-session", checkoutUser.isAdmin,function(req,res){
