@@ -50,21 +50,19 @@
 
 			<!-- Form -->
 			<section class="main">
-				<form id="formulario" method="post" action="/registro/form" enctype="multipart/form-data">
 					<div class="row gtr-uniform">
 						<div class="col-12 col-12-xsmall">
-							<input type="text" name="correo" id="correo" placeholder="Correo de usuario Pubdev" required />
+							<input type="text" id="correo" placeholder="Correo de usuario Pubdev" required />
 						</div>
 						<div class="col-12 col-12-xsmall">
-							<input type="email" name="codigoEvento" id="codigoEvento" placeholder="Codigo del evento" required />
+							<input type="email" id="codigo" placeholder="Codigo del evento" required />
 						</div>
 						<div class="col-12">
 							<ul class="actions">
-								<li><input type="submit" id="btnRegistrarse" value="Registrar" /></li>
+								<li><input type="button" id="btnRegistrarse" value="Registrar" /></li>
 							</ul>
 						</div>
 					</div>
-				</form>
 			</section>
 
 
@@ -101,23 +99,61 @@
 
 	<!-- PREVISUALIZAR LA IMAGEN -->
 	<script>
+		document.getElementById("btnRegistrarse").addEventListener("click", function (e){
+			var correo = document.getElementById("correo").value;
+			var codigo = document.getElementById("codigo").value;
+			if(validarDatos(correo, codigo)){
+				var url = "/sudo//GeneradorDePuntos/cargarPuntos"
+              fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    correo: correo,
+					codigo: codigo
+                    }),
+                headers:{
+                    'Content-Type': 'application/json'
+                  }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => alertas(response));
+			}else{
 
-		document.getElementById("btn_enviar").onchange = function (e) {
-			let reader = new FileReader();
+			}
+		});
+		function alertas(datos){
 
-			reader.onload = function () {
-				let preview = document.getElementById('preview'),
-					image = document.createElement('img');
-
-				image.src = reader.result;
-
-				preview.innerHTML = '';
-				preview.append(image);
-			};
-
-			reader.readAsDataURL(e.target.files[0]);
+			datos = datos.estado;
+			console.log(datos)
+			if(datos == true){
+				alert("ya tienes los puntos =D")
+			}else if(datos == "Codigo Expirado"){
+				alert("codiogo a expirado")
+			}else if(datos == "No Existe"){				
+				alert("codigo no existe")
+			}else if(datos == "Ya Tienes Codigo"){
+				alert("no puedes repetir mas de una vez")
+			}else if(datos == "No Estas Registrado"){
+				alert("No estas registrado")
+			}
 		}
-
+		function validarDatos(correo, codigo){
+			if(validarEmail(correo) && validarCodigo(codigo)){
+				return true
+			}else{
+				return false
+			}
+		}
+		function validarCodigo(codigo){
+			if (codigo.length == 8){
+				return true
+			}else{
+				return false
+			}
+		}
+		function validarEmail(email){
+  			var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			return regex.test(email) ? true : false;
+		}
 	</script>
 
 	<!-- Scripts -->
@@ -128,7 +164,6 @@
 	<script src="resource/script?src=breakpoints-min"></script>
 	<script src="resource/script?src=util"></script>
 	<script src="resource/script?src=main"></script>
-	<script src="resource/script?src=registro"></script>
 
 </body>
 

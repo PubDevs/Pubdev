@@ -36,6 +36,7 @@ router.get("/GeneradorDePuntos",checkoutUser.isAdmin ,controllerAdmGeneradorDePu
 router.post("/CrearCodigo", controllerAdmGeneradorDePuntos.generarCodigo)
 router.get("/GeneradorDePuntos/traerCodigos", controllerAdmGeneradorDePuntos.bucarCodigos)
 router.post("/GeneradorDePuntos/cambiarestadodelcodigo", controllerAdmGeneradorDePuntos.cambiaresadodecodigogenerado)
+router.post("/GeneradorDePuntos/cargarPuntos", controllerAdmGeneradorDePuntos.cargarPuntos)
 
 router.post("/login", controllerAmdIndex.VerificarSiEsAdm)
 router.get("/cerrar-session", checkoutUser.isAdmin,function(req,res){

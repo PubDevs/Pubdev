@@ -23,4 +23,8 @@ controllerAdmGeneradorDePuntos.cambiaresadodecodigogenerado = async(req, res)=>{
     const objModel = new modelGeneradordepuntos(req.body,this.db)
     res.send(await objModel.cambiarestadodelcodigo())
 }
+controllerAdmGeneradorDePuntos.cargarPuntos = async(req, res)=>{
+    const objModel = new modelGeneradordepuntos(req.body,this.db)
+    res.send(await objModel.cargarPuntosdb())
+}
 module.exports=controllerAdmGeneradorDePuntos

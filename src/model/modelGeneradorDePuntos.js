@@ -35,6 +35,84 @@ modeloGeneradorDePuntos.prototype.cambiarestadodelcodigo = function(){
     })
 }
 
+modeloGeneradorDePuntos.prototype.cargarPuntosdb = function(){
+    return new Promise (async resolver =>{
+        var resultado = await verificarestadodelcodigo(this.db,this.datos.codigo)
+        if(resultado == true){
+            if(await validarCollectionenpuntosrepetidos(this.db,this.datos.codigo,this.datos.correo)){
+                if(await canjearCodigo(this.db, this.datos)){
+                    resolver({estado: true})
+                }else{
+                    resolver({estado : "No Estas Registrado"})
+                }
+            }else{
+                resolver({estado : "Ya Tienes Codigo"})
+            }
+        }else if(resultado == false){
+            resolver({estado: "Codigo Expirado"})
+        }else if(resultado == "No Existe"){
+            resolver({estado : "No Existe"})
+        }
+    })
+}
+
+function canjearCodigo(db,datos){
+    return new Promise (resolver => {
+        db.doc("Cuentas/"+sha1(datos.correo)).get()
+        .then(snapshot =>{
+            if(snapshot.data() == undefined){
+                //vacio
+                resolver(false)
+            }else{
+               sumarPuntosaluser(db,snapshot.data(),datos)
+               registrarPuntosEnCollectionHistorial(db,datos)
+               resolver(true)
+            }
+        })
+    })
+}
+function registrarPuntosEnCollectionHistorial(db,datosPost){
+    var uid= datosPost.correo +"-"+datosPost.codigo
+    datosPost.condicional=datosPost.correo+"/"+datosPost.codigo
+    db.doc("HistorialDePuntosDeCodigos/"+sha1(uid)).set(datosPost)
+}
+function sumarPuntosaluser(db,datauser,datapost){
+    db.doc("codigo/"+datapost.codigo).get()
+    .then(snapshot => {
+        var puntos = parseInt(((snapshot.data()).puntos)) + parseInt(datauser.puntos)
+        db.doc("Cuentas/"+sha1(datapost.correo)).update({puntos: puntos})
+    })
+    .catch(error => {
+        console.log("mensaje del erorr: "+ error)
+    })
+}
+function validarCollectionenpuntosrepetidos(db, codigo,correo){
+    return new Promise (resolver => {
+        db.collection("HistorialDePuntosDeCodigos").where("condicional","==",correo+"/"+codigo).get()
+        .then(snapshot => {
+            if(snapshot.empty){
+                //busqueda vacia
+                resolver(true)
+            }else{
+                resolver(false)
+            }
+        })
+        .catch(error => {
+            console.log('Error getting documents', error)
+        })
+    })
+}
+function verificarestadodelcodigo(db,codigo){
+    return new Promise(resolver => {
+        db.doc("codigo/"+codigo).get().then(documentSnapshot => {
+            if (documentSnapshot.exists){
+                resolver((documentSnapshot.data()).estado)
+            }else{
+                resolver("No Existe")
+            }
+          });
+    })
+}
 function cambiarestadodelcodigoDb(db,datos){
     return new Promise (resolver => {
         db.doc('codigo/'+datos.codigo).update({estado: datos.estado}).then(res => {

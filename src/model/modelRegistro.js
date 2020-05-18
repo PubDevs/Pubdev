@@ -18,6 +18,7 @@ registro.prototype.crearUsuarionew = function(){
 		const db = this.db
 		const datos = this.datos
 		datos.correo = datos.correo.toLowerCase()
+		datos.puntos = 0
 		//console.log("entro a la funcion")
 		const url = "Cuentas"
 
