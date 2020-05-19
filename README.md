@@ -14,3 +14,7 @@ Aqui puedes encontrar el diseño de nuestra pagina web principal la cual utiliza
 ## Contribuyentes
 
 * Sebastian Roa Meneses
+* Andres Felipe Peña Ramirez
+* Juan Edison Giraldo Zuluaga
+* Dana Yeraldinne García
+* Juan Bautista
