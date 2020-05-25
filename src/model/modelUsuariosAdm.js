@@ -1,6 +1,10 @@
 var Firebase = require('firebase');
 const sha1 = require('sha1');
 const {Storage} = require('@google-cloud/storage');
+<<<<<<< HEAD
+=======
+const jwt = require("jsonwebtoken")
+>>>>>>> upstream/master
 const storage = new Storage({
 	keyFilename: "../pubdev-968b9-firebase-adminsdk-i9atd-d4e7d40b63.json",
 	 projectId: "pubdev-968b9"
@@ -14,26 +18,43 @@ const ModeloUsuarioAdmin = function (datos, db, firebaseCliente){
 }
 ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
     return new Promise(resolver => {
+<<<<<<< HEAD
         console.log("enta dentro") 
         console.log(this.datos)
         const auth = this.auth
         this.db.collection("Cuentas").where('correo', '==', this.datos.correo).get()
+=======
+        const auth = this.auth
+        this.db.collection("Cuentas").where('correo', '==', this.datos.correo.toLowerCase()).get()
+>>>>>>> upstream/master
         .then(snapshot => {
 			if (snapshot.empty){
                 res.send("Administrador no logeado")
             }else{
                 //existe el usuario
+<<<<<<< HEAD
                 console.log("Linea 30 existe user")
+=======
+>>>>>>> upstream/master
                 let administrador = {}
                 snapshot.forEach(doc => {
                 //console.log(doc.id, '=>', doc.data())
                 administrador=doc.data()
                 });
+<<<<<<< HEAD
                 console.log(administrador)
                 if(administrador.tipo == "administrador"){
                     console.log("administrador")
                     this.auth.signInWithEmailAndPassword(this.datos.correo,this.datos.clave).then(response=>{
                         req.session.user=administrador
+=======
+                if(administrador.tipo == "administrador"){
+                    this.auth.signInWithEmailAndPassword(this.datos.correo.toLowerCase(),this.datos.clave).then(response=>{
+                        var token=jwt.sign(administrador,"obviamente lo que esta aca se cambia", {
+                            expiresIn: 60 * 60 * 24 // expires in 24 hours
+                         })
+                        req.session.user=token
+>>>>>>> upstream/master
                         res.redirect("/sudo")
                     })
                     .catch(function(error) {
@@ -47,11 +68,17 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                           console.log(errorMessage);
                           res.send("ususario no identificado");
                         }
+<<<<<<< HEAD
                         res.send("usuario no identificado")
                     });
                     
                 }else{
                     console.log("no adm")
+=======
+                    });
+                    
+                }else{
+>>>>>>> upstream/master
                     res.send("no eres administrador");
                 }
             }

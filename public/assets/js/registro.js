@@ -25,6 +25,7 @@ document.getElementById("btnRegistrarse").addEventListener("click", function(eve
 	console.log(form)
 	if(form.get("nombre") !== "" && validarEmail(form.get("correo")) && form.get("sobreNombre") !== "" &&  validarContrasena(form.get("contrasena1"), form.get("contrasena2")) && form.get("BackEnd") !== "Back-end" && form.get("FrontEnd") !== "Front-End"){
 		var url = '/registro/form';
+		alert("Registro exitoso");
 		fetch(url, {
 		  method: 'POST',
 		  body: form, 

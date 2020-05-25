@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const checkoutUser={
     isAdmin(req, res, next){
         if(req.session.user != undefined){
@@ -5,6 +6,23 @@ const checkoutUser={
                 next();
             else
                 res.redirect("/sudo/login")
+=======
+
+const jwt = require("jsonwebtoken")
+const checkoutUser={
+    isAdmin(req, res, next){           
+        if(req.session.user != undefined){
+            jwt.verify(req.session.user,"obviamente lo que esta aca se cambia",function(err,decoded){
+                if(err){
+                    res.redirect("/sudo/login")
+                }else{
+                    if(decoded.tipo=="administrador")
+                        next();
+                    else
+                        res.redirect("/sudo/login")
+                }            
+            })
+>>>>>>> upstream/master
         }else{
             res.redirect("/sudo/login")
         }

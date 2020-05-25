@@ -21,6 +21,15 @@
         <a href="#" class="list-group-item list-group-item-action bg-light">Ver eventos</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
         <a href="/sudo/ver-usuarios" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
+<<<<<<< HEAD
+=======
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Puntos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/sudo/GeneradorDePuntos">Generador de codigos</a>
+        </div>
+>>>>>>> upstream/master
         <a href="/sudo/cerrar-session" class="list-group-item list-group-item-action bg-light">Cerrar session</a>
       </div>
     </div>
@@ -32,8 +41,8 @@
          </div>
     </div>
   </div>
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
+  <script src="resource/script?src=jquery-min&token={{token}}"></script>
+  <script src="resource/script?src=bootstrap-bundle-min&token={{token}}"></script>
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();

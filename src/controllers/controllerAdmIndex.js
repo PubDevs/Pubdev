@@ -7,7 +7,11 @@ controllerAdmIndex.guardarDb = (db,firebaseCliente)=>{
     this.firebaseCliente = firebaseCliente
 } 
 controllerAdmIndex.renderAdmIndexPage = (req, res) => {
+<<<<<<< HEAD
     res.render("../../views/admIndex")
+=======
+    res.render("../../views/admIndex",{token:req.session.user})
+>>>>>>> upstream/master
 }
 controllerAdmIndex.renderAdmLoginPage = (req, res) => {
     res.render("../../views/admLogin")

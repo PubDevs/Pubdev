@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Admin Pubdev</title>
+  <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/css/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+  <div class="d-flex" id="wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><img src="../images/logo.png" alt="50" width="50"> <a href="/admpubdevindex">administrador</a></div>
+      <div class="list-group list-group-flush">
+        <a href="/sudo/crear-evento" class="list-group-item list-group-item-action bg-light">Crear eventos</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Ver eventos</a>        
+        <a href="/sudo/ver-usuarios" class="list-group-item list-group-item-action bg-light">Ver usuarios</a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Puntos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/sudo/GeneradorDePuntos">Generador de codigos</a>
+        </div>
+        <a href="/sudo/cerrar-session" class="list-group-item list-group-item-action bg-light">Cerrar session</a>
+      </div>
+    </div>
+    <div id="page-content-wrapper">
+      <button class="btn btn-primary" id="menu-toggle">Menu lateral</button>
+      <div class="container-fluid">
+        <br>
+        <select id="Select" class="form-control">
+        <option selected>Seleccionar</option>
+        <option>Generador de codigos</option>
+      </select><br>
+        <div id="contenedorDeVistas">
+          <div>
+            <h3>Crear Codigo</h3><br>
+            <div class="row">
+              <div class="col-md-2">
+                 <input type="number" id="numberCantidadPuntos" class="form-control" placeholder="Cantidad de puntos">
+              </div>
+              <div class="col-md-2">
+                  <input type="text" id="txtcode" class="form-control" disabled>
+              </div>
+              <div class="col-md-4">
+                 <textarea class="form-control" id="areaDescripcion" placeholder="descripcion"></textarea>
+              </div>
+              <div class="col-md-2">
+                <button class="form-control btn-primary" id="btnGenerateCode">Random</button>
+              </div>
+              <div class="col-md-2">
+                <button class="form-control btn-success" id="btnGenerarcodigo">Generar</button>
+              </div>
+            </div>
+            
+          </div>
+          <br><h3>Codigos Generados</h3>
+          <div class="row">
+            <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">codigo</th>
+                <th scope="col">fecha y hora</th>
+                <th scope="col">descripcion</th>
+                <th scope="col">puntos</th>
+                <th scope="col">Estados</th>
+              </tr>
+            </thead>
+            <tbody id="datosTbody">
+             
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../resource/script?src=jquery-min&token={{token}}"></script>
+  <script src="../resource/script?src=bootstrap-bundle-min&token={{token}}"></script>
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+  <script>
+    cargarCodigosGenerados()
+      document.getElementById("btnGenerateCode").addEventListener("click", function (e){
+           document.getElementById("txtcode").value=generadordecodigos(8)
+      })
+
+      document.getElementById("btnGenerarcodigo").addEventListener("click", function (e) {
+          var numero = document.getElementById("numberCantidadPuntos").value
+          var area =  document.getElementById("areaDescripcion").value
+          var codigo = document.getElementById("txtcode").value
+
+          if(validarInfo(numero, area, codigo)){
+              var url = "/sudo/CrearCodigo"
+              fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    puntos: numero,
+                    descripcion: area,
+                    codigo: codigo,
+                    hora: mostrarhora(),
+                    fecha: mostrarFecha(),
+                    estado: true
+                    }),
+                headers:{
+                    'Content-Type': 'application/json'
+                  }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => alertas(response));
+          }else{
+            /*
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'te falta un dato',
+                footer: 'verifica plox'
+                })*/
+                alert("datos basios")
+          }
+      })
+      function cargarCodigosGenerados(){
+        var url = "/sudo/GeneradorDePuntos/traerCodigos"
+              fetch(url, {
+                method: 'GET'
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => imprimirtabla(response));
+      }
+      function imprimirtabla(datos){
+        var string = ``;
+        string+=formarTabladecodigos(datos, true);
+        string+=formarTabladecodigos(datos, false);
+        document.getElementById("datosTbody").innerHTML=string;
+      }
+
+      function formarTabladecodigos(datos, estado){
+        var string = ``;
+        if(estado){
+          if(datos.true !== false){
+            for(key in datos.true){
+              string+=`
+              <tr class="bg-success">
+                <th>${datos.true[key].codigo}</th>
+                <td>${datos.true[key].fecha} - ${datos.true[key].hora}</td>
+                <td>${datos.true[key].descripcion}</td>
+                <td>${datos.true[key].puntos}</td>
+                <td>${datos.true[key].estado} 
+                <img src="../images/exchanging.png" height="30px" onclick="cambiardeestado('${datos.true[key].codigo}',false)"></td>
+              </tr>
+              `;
+            } 
+          }
+        }else{
+          if(datos.false !== false){
+            for(key in datos.false){
+              string+=`
+              <tr class="bg-danger">
+                <th>${datos.false[key].codigo}</th>
+                <td>${datos.false[key].fecha} - ${datos.false[key].hora}</td>
+                <td>${datos.false[key].descripcion}</td>
+                <td>${datos.false[key].puntos}</td>
+                <td>${datos.false[key].estado}
+                <img src="../images/exchanging.png" height="30px" onclick="cambiardeestado('${datos.false[key].codigo}',true)"></td>
+              </tr>
+              `;
+            } 
+            } 
+          }
+          return string
+        }
+      
+      function cambiardeestado(codigo,estado){
+        
+        var url = "/sudo/GeneradorDePuntos/cambiarestadodelcodigo"
+              fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    codigo: codigo,
+                    estado: estado
+                    }),
+                headers:{
+                    'Content-Type': 'application/json'
+                  }
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => alertasdecambiodeestado(response));
+      }
+      function alertasdecambiodeestado(estado){
+        if(estado){
+          cargarCodigosGenerados();
+        }else{
+          alert("se genero error al cambiar estado del codigo")
+        }
+      }
+
+      function alertas(estado){
+        if(estado){
+          cargarCodigosGenerados();
+          alert("se genero correctamente el codigo")
+        }else{
+          alert("el codigo ya fue creado anteriormente")
+        }
+      }
+
+      function validarInfo(numero, area, codigo){
+          if(numero > 0 && area != "" && codigo !== ""){
+              return true
+          }else{
+              return false
+          } 
+      }
+
+      function generadordecodigos(length){
+            var result           = '';
+            var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            var charactersLength = characters.length;
+            for ( var i = 0; i < length; i++ ){
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+        function mostrarhora(){
+          var f=new Date();
+          return cad=f.getHours()+":"+f.getMinutes()+":"+f.getSeconds();
+        }
+        function mostrarFecha(){
+            var n =  new Date();
+            var y = n.getFullYear();
+            var m = n.getMonth() + 1;
+            var d = n.getDate();
+            if(m <10){
+              return y + "-0" + m + "-" + d;
+            }else{
+              return y + "-" + m + "-" + d;
+            }
+        }
+  </script>
+</body>
+</html>

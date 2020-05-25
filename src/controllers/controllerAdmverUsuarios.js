@@ -5,7 +5,7 @@ controllerVerUsuarios.guardarDb = (db)=>{
 	this.db=db
 } 
 controllerVerUsuarios.renderadmverusuariosPage = (req, res) => {
-    res.render("../../views/admVerUsuarios")
+    res.render("../../views/admVerUsuarios",{token:req.session.user})
 }
 
 controllerVerUsuarios.guardarDb = (db)=>{
