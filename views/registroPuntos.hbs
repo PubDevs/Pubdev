@@ -8,11 +8,11 @@
 <html>
 <head>
 	{{>head}}
-	<link rel="icon" href="images/icono_low.png">
-
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/noscript.css" />
+	</noscript>
+	
 </head>
 
 <body class="is-preload">
@@ -25,16 +25,7 @@
 		<!-- Main -->
 		<div id="main">
 
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="/" class="active">INICIO</a></li>
-					<li><a href="/registro">REGISTRATE</a></li>
-					<li><a href="/eventos">EVENTOS</a></li>
-					<li><a href="/salondefama">SALON DE LA FAMA</a></li>
-					<li><a href="/equipo">EQUIPO</a></li>
-					<!--<li><a href="#">PATROCINADORES</a></li> -->
-				</ul>
-			</nav>
+			{{>nav}}
 			<!-- Content -->
 
 			<!-- Form -->
@@ -57,30 +48,7 @@
 
 		</div>
 
-		<!--Footer-->
-		<footer id="footer">
-			<section style="align-items: center;">
-				<header class="major">
-					<h2>Nuestras redes sociales</h2>
-				</header>
-
-
-			</section>
-			<section style="align-items: center;">
-				<ul class="icons">
-					<li><a href="https://twitter.com/pubdev01" target="_blank" class="icon brands fa-twitter alt"><span
-								class="label">Twitter</span></a></li>
-					<li><a href="https://www.facebook.com/pubdev" target="_blank"
-							class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-					<li><a href="https://www.instagram.com/pubdev" target="_blank"
-							class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					<li><a href="https://t.me/joinchat/DS7d-VbynYfq5sKTrMDYtA" target="_blank"
-							class="icon brands fa-telegram alt"><span class="label">Telegram</span></a></li>
-					<li><a href="https://www.youtube.com/channel/UCkWzkTACfvry7fwIkFRoKIQ" target="_blank"
-							class="icon brands fa-youtube alt"><span class="label">YouTube</span></a></li>
-				</ul>
-			</section>
-		</footer>
+		{{>footer}}
 
 	</div>
 
@@ -110,26 +78,24 @@
 			}
 		});
 		function alertas(datos){
-
 			datos = datos.estado;
-			console.log(datos)
 			if(datos == true){
-				alert("ya tienes los puntos =D")
+				swal("Gracias por tu aporte"," se han registrado los puntos =D", "success")
 			}else if(datos == "Codigo Expirado"){
-				alert("codiogo a expirado")
+				swal("El codigo a expirado")
 			}else if(datos == "No Existe"){				
-				alert("codigo no existe")
+				swal("El Codigo no existe")
 			}else if(datos == "Ya Tienes Codigo"){
-				alert("no puedes repetir mas de una vez")
+				swal("Solo puedes registrar una vez el codigo")
 			}else if(datos == "No Estas Registrado"){
-				alert("No estas registrado")
+				swal("No estas en la lista","Para poder sumar puntos dentro de nuestra comunidad registrate","warning")
 			}
 		}
 		function validarDatos(correo, codigo){
 			if(validarEmail(correo) && validarCodigo(codigo)){
 				return true
 			}else{
-				return false
+				swal("El codigo no es valido")
 			}
 		}
 		function validarCodigo(codigo){
@@ -153,6 +119,8 @@
 	<script src="resource/script?src=breakpoints-min"></script>
 	<script src="resource/script?src=util"></script>
 	<script src="resource/script?src=main"></script>
+	<!-- alerts bonitos-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
 </body>
 
