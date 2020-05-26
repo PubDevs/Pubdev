@@ -6,6 +6,7 @@ const routerAdm = require("./rutas/rutasAdm")
 const routeResource = require("./rutas/rutasResource")
 const session = require('express-session');
 const compress = require("compression")
+const hbs = require("hbs")
 app.use(session({
     secret: 'lssl, i love forever',
     resave: true,
@@ -28,6 +29,9 @@ app.use("/", routerIndex)
 app.use("/sudo",routerAdm)
 app.use("/resource",routeResource)
 app.use(compress())
+
+hbs.registerPartials(__dirname + "/../views/utilidades")
+
 
 app.listen(3000)
 console.log("Servidor encendido abre --> http://localhost:3000")
