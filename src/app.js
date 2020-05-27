@@ -1,26 +1,18 @@
 const path = require("path")
 const express = require("express")
 const app = express()
-<<<<<<< HEAD
-const router = require("./router")
-const session = require('express-session');
-
-app.use(session({
-    secret: 'lssl, i love forever',
-    resave: true,
-    saveUninitialized: true
-=======
 const routerIndex = require("./rutas/rutasUser")
 const routerAdm = require("./rutas/rutasAdm")
 const routeResource = require("./rutas/rutasResource")
 const session = require('express-session');
 const compress = require("compression")
+const hbs = require("hbs")
 app.use(session({
     secret: 'lssl, i love forever',
     resave: true,
     saveUninitialized: true,
     expires :60 * 60 * 24
->>>>>>> upstream/master
+
 }));
 
 app.use(express.urlencoded({ extended: false})) // midelware 
@@ -38,6 +30,9 @@ app.use("/", routerIndex)
 app.use("/sudo",routerAdm)
 app.use("/resource",routeResource)
 app.use(compress())
+
+hbs.registerPartials(__dirname + "/../views/utilidades")
+
 
 app.listen(3000)
 console.log("Servidor encendido abre --> http://localhost:3000")

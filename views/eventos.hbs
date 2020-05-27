@@ -8,19 +8,7 @@
 <html>
 
 <head>
-	<title>PubDev</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<meta name="DC.Language" SCHEME="RFC1766" content="Spanish">
-	<meta name="author" content="Sebastian Roa Meneses">
-	<meta name="reply-to" content="Serome111@gmail.com">
-	<link rev="made" href="mailto:Serome111@gmail.com">
-	<meta name="description" content="web en desarrollo">
-	<meta name="KEYWORDS" content="palabras clave">
-	<meta name="Resource-type" content="Index">
-	<meta name="Revisit-after" content="60 days">
-	<meta name="robots" content="follow">
-	<link rel="icon" href="images/icono_low.png">
+	{{>head}}
 	<link rel="stylesheet" href="assets/css/eventos.css" />
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -43,17 +31,7 @@
 		<!-- Main -->
 		<div id="main">
 
-			<nav id="nav">
-				<ul class="links">
-					<li><a href="/" class="active">INICIO</a></li>
-					<li><a href="/registro">REGISTRATE</a></li>
-					<li><a href="/eventos">EVENTOS</a></li>
-					<li><a href="/salondefama">SALON DE LA FAMA</a></li>
-					<li><a href="/equipo">EQUIPO</a></li>
-
-					<!--<li><a href="#">PATROCINADORES</a></li> -->
-				</ul>
-			</nav>
+			{{> nav}}
 
 			<section class="main">
 				<div class="spotlight">
@@ -165,31 +143,7 @@
 		</div>
 
 
-		<!-- Footer -->
-		<footer id="footer">
-			<section style="align-items: center;">
-				<header class="major">
-					<h2>Nuestras redes sociales</h2>
-				</header>
-
-
-			</section>
-			<section style="align-items: center;">
-				<ul class="icons">
-					<li><a href="https://twitter.com/pubdev01" target="_blank" class="icon brands fa-twitter alt"><span
-								class="label">Twitter</span></a></li>
-					<li><a href="https://www.facebook.com/pubdev" target="_blank"
-							class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
-					<li><a href="https://www.instagram.com/pubdev" target="_blank"
-							class="icon brands fa-instagram alt"><span class="label">Instagram</span></a></li>
-					<li><a href="https://t.me/joinchat/DS7d-VbynYfq5sKTrMDYtA" target="_blank"
-							class="icon brands fa-telegram alt"><span class="label">Telegram</span></a></li>
-					<li><a href="https://www.youtube.com/channel/UCkWzkTACfvry7fwIkFRoKIQ" target="_blank"
-							class="icon brands fa-youtube alt"><span class="label">YouTube</span></a></li>
-				</ul>
-			</section>
-		</footer>
-
+		{{> footer}}
 	</div>
 
 	<!-- Scripts -->

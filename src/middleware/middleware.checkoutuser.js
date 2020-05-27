@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-const checkoutUser={
-    isAdmin(req, res, next){
-        if(req.session.user != undefined){
-            if(req.session.user.tipo=="administrador")
-                next();
-            else
-                res.redirect("/sudo/login")
-=======
 
 const jwt = require("jsonwebtoken")
 const checkoutUser={
@@ -22,7 +13,6 @@ const checkoutUser={
                         res.redirect("/sudo/login")
                 }            
             })
->>>>>>> upstream/master
         }else{
             res.redirect("/sudo/login")
         }
