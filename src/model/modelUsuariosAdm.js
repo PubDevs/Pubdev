@@ -22,6 +22,7 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                 res.send("Administrador no logeado")
             }else{
                 //existe el usuario
+                
                 let administrador = {}
                 snapshot.forEach(doc => {
                 //console.log(doc.id, '=>', doc.data())
@@ -49,13 +50,14 @@ ModeloUsuarioAdmin.prototype.logearAdm = function(req,res){
                     });
                     
                 }else{
-                    res.send("no eres administrador");
+
+                    res.send("No eres administrador");
                 }
             }
         }).catch(err => {
                 console.log('Error getting documents', err);
                 resolver("false")
-                res.send("no aparecez como usuario")
+                res.send("No apareces como usuario")
                 });
     })
 }

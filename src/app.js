@@ -12,6 +12,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     expires :60 * 60 * 24
+
 }));
 
 app.use(express.urlencoded({ extended: false})) // midelware 

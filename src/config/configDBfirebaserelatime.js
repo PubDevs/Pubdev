@@ -1,6 +1,5 @@
 class GenerateCon{
 
-
     static crearConexionAdmin(admin){
         if(GenerateCon.serve == null){
            
