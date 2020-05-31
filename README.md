@@ -20,5 +20,7 @@ Aqui puedes encontrar el diseño de nuestra pagina web principal la cual utiliza
 * Juan Bautista
 
 ### Pendientes
+
 * Autenticación de usuarios de doble factor, y poder editar su información pesonal y visualizar los cursos hechos por PubDev.
+
 * Manejo de calendario para mostrar la linea de tiempo de los diferentes eventos de la comunidad.
