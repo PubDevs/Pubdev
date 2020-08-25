@@ -7,6 +7,8 @@ const routeResource = require("./rutas/rutasResource")
 const session = require('express-session');
 const compress = require("compression")
 const hbs = require("hbs")
+const helmet = require("helmet");
+
 app.use(session({
     secret: 'lssl, i love forever',
     resave: true,
@@ -14,6 +16,11 @@ app.use(session({
     expires :60 * 60 * 24
 
 }));
+
+
+app.use(helmet.dnsPrefetchControl())
+app.use(helmet.xssFilter())
+
 
 app.use(express.urlencoded({ extended: false})) // midelware 
 app.use(express.json()) // todo los datos se parcean a json
