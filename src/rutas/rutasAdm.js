@@ -1,5 +1,5 @@
 var configDBrealtime = require('../config/configDBfirebaserelatime')
-var firebaseCliente = configDBrealtime.crearConexionCliente(require("firebase"))
+var firebaseCliente = configDBrealtime.crearConexionCliente(require("firebase/app"))
 
 var db = configDBrealtime.crearConexionAdmin(require("firebase-admin"))
 const express = require("express")
