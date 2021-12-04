@@ -1,4 +1,3 @@
-var Firebase = require('firebase');
 const sha1 = require('sha1');
 const {Storage} = require('@google-cloud/storage');
 const storage = new Storage({
